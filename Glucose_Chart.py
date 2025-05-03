@@ -30,7 +30,7 @@ file_path = excel_file
 image_path = image_file
 
 # Read the Excel file, extracting data from Sheet2
-df = pd.read_excel(file_path, sheet_name="Glycèmie De Richard Perreault", skiprows=3)
+df = pd.read_excel(file_path, sheet_name="Glycèmie De Moi", skiprows=3)
 print(df.head())  # Verify if column A now contains actual data
 
 print(df.columns)
@@ -128,7 +128,7 @@ excel = win32com.client.Dispatch("Excel.Application")
 for wb in excel.Workbooks:
     if wb.FullName.lower().find(file_path.lower().split("/")[-1])!=-1:
         
-        ws = wb.Sheets("Glycèmie De Richard Perreault")  # Select the correct sheet
+        ws = wb.Sheets("Glycèmie De Moi")  # Select the correct sheet
         
         # **Remove existing images**
         for shape in ws.Shapes:

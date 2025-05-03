@@ -1,6 +1,6 @@
 Sub CreateDiabetesChart()
     Dim ws As Worksheet
-    Set ws = ThisWorkbook.Sheets("Glycèmie De Richard Perreault")
+    Set ws = ThisWorkbook.Sheets("Glycèmie De Moi")
     
     ' Delete existing charts
     Dim co As ChartObject
@@ -107,7 +107,7 @@ End Sub
 
 Sub GlucoseColorIndex()
     Dim ws As Worksheet
-    Set ws = ThisWorkbook.Sheets("Glycèmie De Richard Perreault") ' Ensure it runs on Sheet2
+    Set ws = ThisWorkbook.Sheets("Glycèmie De Moi") ' Ensure it runs on Sheet2
     
     ' High value (Red)
     For Each cell In ws.Range("B5:B1000")
@@ -170,7 +170,7 @@ Sub CalculateDailyAverages()
     Dim outputRow As Long
     
     ' Set worksheet
-    Set ws = ThisWorkbook.Sheets("Glycèmie De Richard Perreault") ' Change "Sheet1" to your actual sheet name
+    Set ws = ThisWorkbook.Sheets("Glycèmie De Moi") ' Change "Sheet1" to your actual sheet name
     
     ' Find last row in column B
     lastRow = ws.Cells(ws.Rows.Count, "A").End(xlUp).Row
@@ -223,7 +223,7 @@ Sub CopyDataByDateRange(msg)
     
     ' Set worksheets
     Set wsSource = ThisWorkbook.Sheets("Page D'accueil") ' Source data
-    Set wsDest = ThisWorkbook.Sheets("Glycèmie De Richard Perreault") ' Destination data
+    Set wsDest = ThisWorkbook.Sheets("Glycèmie De Moi") ' Destination data
     
     ' Clear previous data on Sheet2 (A5:F1000)
     wsDest.Range("A5:F1000").ClearContents
@@ -269,7 +269,7 @@ Sub RemoveImageAndRunPython()
     Dim pythonScript As String
 
     ' Set worksheet
-    Set ws = ThisWorkbook.Sheets("Glycèmie De Richard Perreault") ' Change sheet name if needed
+    Set ws = ThisWorkbook.Sheets("Glycèmie De Moi") ' Change sheet name if needed
 
     ' Loop through all shapes to find and delete the image
     For Each shp In ws.Shapes
@@ -279,7 +279,7 @@ Sub RemoveImageAndRunPython()
     Next shp
 
     ' Set the Python script path
-    pythonScript = """C:\Users\rchrd\Documents\Python\LibraViewExcel\Glucose_Chart.py""" ' Update with your actual Python script
+    pythonScript = """C:\Users\rchrd\Documents\Python\LibreViewExcel\Glucose_Chart.py""" ' Update with your actual Python script
 
     ' Run the Python script
     Shell "python " & pythonScript, vbNormalFocus
