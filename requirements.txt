@@ -1,6 +1,4 @@
-json
 pandas
 xlwings
-tkinter
 matplotlib
 numpy
