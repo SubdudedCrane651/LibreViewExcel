@@ -11,10 +11,10 @@ Sub CreateDiabetesChart()
     ' Create new chart
     Dim newChartObj As ChartObject
     Set newChartObj = ws.ChartObjects.Add( _
-        Left : = ws.Range("K5").Left, _
-        Top : = ws.Range("K5").Top, _
-        Width : = 500, _
-        Height : = 300)
+        Left:=ws.Range("K5").Left, _
+        Top:=ws.Range("K5").Top, _
+        Width:=500, _
+        Height:=300)
     
     With newChartObj.Chart
         .ChartType = xlLine
@@ -98,10 +98,10 @@ Sub CreateDiabetesChart()
         .HasLegend = True
         
         ' Assign colors to each series
-        If seriesCount >= 1 Then.SeriesCollection(1).Format.Line.ForeColor.RGB = RGB(255, 0, 0) ' Red
-        If seriesCount >= 2 Then.SeriesCollection(2).Format.Line.ForeColor.RGB = RGB(0, 255, 0) ' Green
-        If seriesCount >= 3 Then.SeriesCollection(3).Format.Line.ForeColor.RGB = RGB(0, 0, 255) ' Blue
-        If seriesCount >= 4 Then.SeriesCollection(4).Format.Line.ForeColor.RGB = RGB(255, 165, 0) ' Orange
+        If seriesCount >= 1 Then .SeriesCollection(1).Format.Line.ForeColor.RGB = RGB(255, 0, 0) ' Red
+        If seriesCount >= 2 Then .SeriesCollection(2).Format.Line.ForeColor.RGB = RGB(0, 255, 0) ' Green
+        If seriesCount >= 3.9 Then .SeriesCollection(3).Format.Line.ForeColor.RGB = RGB(0, 0, 255) ' Blue
+        If seriesCount >= 4 Then .SeriesCollection(4).Format.Line.ForeColor.RGB = RGB(255, 165, 0) ' Orange
     End With
 End Sub
 
@@ -111,46 +111,46 @@ Sub GlucoseColorIndex()
     
     ' High value (Red)
     For Each cell In ws.Range("B5:B1000")
-        If cell.Value > 7 Then cell.Font.Color = vbRed
+        If cell.Value > 10 Then cell.Font.Color = vbRed
     Next cell
 
     For Each cell In ws.Range("C5:C1000")
-        If cell.Value > 7 Then cell.Font.Color = vbRed
+        If cell.Value > 10 Then cell.Font.Color = vbRed
     Next cell
 
     For Each cell In ws.Range("D5:D1000")
-        If cell.Value > 7 Then cell.Font.Color = vbRed
+        If cell.Value > 10 Then cell.Font.Color = vbRed
     Next cell
 
     For Each cell In ws.Range("E5:E1000")
-        If cell.Value > 7 Then cell.Font.Color = vbRed
+        If cell.Value > 10 Then cell.Font.Color = vbRed
     Next cell
 
     For Each cell In ws.Range("F5:F1000")
-        If cell.Value > 7 Then cell.Font.Color = vbRed
+        If cell.Value > 10 Then cell.Font.Color = vbRed
     Next cell
 
     For Each cell In ws.Range("a2:F2")
-        If cell.Value > 7 Then cell.Font.Color = vbRed
+        If cell.Value > 10 Then cell.Font.Color = vbRed
     Next cell
     
     ' Normal value (Green)
     For Each cell In ws.Range("B5:F1000")
-        If cell.Value <= 7 And cell.Value >= 3 Then cell.Font.Color = RGB(0, 128, 0) ' Green
+        If cell.Value <= 10 And cell.Value >= 3.9 Then cell.Font.Color = RGB(0, 128, 0) ' Green
     Next cell
 
     ' Normal value (Green)
     For Each cell In ws.Range("a2:F2")
-        If cell.Value <= 7 And cell.Value >= 3 Then cell.Font.Color = RGB(0, 128, 0) ' Green
+        If cell.Value <= 10 And cell.Value >= 3.9 Then cell.Font.Color = RGB(0, 128, 0) ' Green
     Next cell
     
     ' Low value (Blue)
     For Each cell In ws.Range("B5:F1000")
-        If cell.Value < 3 Then cell.Font.Color = vbBlue
+        If cell.Value < 3.9 Then cell.Font.Color = vbBlue
     Next cell
 
     For Each cell In ws.Range("a2:f2")
-        If cell.Value < 3 Then cell.Font.Color = vbBlue
+        If cell.Value < 3.9 Then cell.Font.Color = vbBlue
     Next cell
     
     
@@ -248,7 +248,7 @@ Sub CopyDataByDateRange(msg)
         If IsDate(cell.Value) Then
             If CDate(cell.Value) >= startDate And CDate(cell.Value) <= endDate Then
                 wsSource.Range(cell.Offset(0, 0), cell.Offset(0, 5)).Copy ' Copy B to F
-                wsDest.Cells(destRow, 1).PasteSpecial Paste : = xlPasteValues
+                wsDest.Cells(destRow, 1).PasteSpecial Paste:=xlPasteValues
                 destRow = destRow + 1
             End If
         End If
@@ -286,3 +286,4 @@ Sub RemoveImageAndRunPython()
 
     MsgBox "Image deleted & Python script executed!", vbInformation, "Success"
 End Sub
+
