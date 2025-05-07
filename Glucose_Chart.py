@@ -4,6 +4,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import os
 import json
+import sys
 from mpl_toolkits.mplot3d import Axes3D  # Required for 3D plotting
 
 # --------------------------
@@ -11,8 +12,19 @@ from mpl_toolkits.mplot3d import Axes3D  # Required for 3D plotting
 # --------------------------
 
 # Get the script's directory (useful for EXE packaging)
-script_dir = os.path.dirname(os.path.abspath(__file__))
+# script_dir = os.path.dirname(os.path.abspath(__file__))
+# json_file_path = os.path.join(script_dir, "Libre2excel.json")
+
+script_dir = os.path.dirname(os.path.abspath(sys.executable)) if getattr(sys, 'frozen', False) else os.path.dirname(os.path.abspath(__file__))
+
+    # Ensure we exclude `.venv` in the path
+if ".venv" in script_dir:
+    script_dir = os.path.dirname(script_dir)  # Move one level up
+
 json_file_path = os.path.join(script_dir, "Libre2excel.json")
+
+print("Filtered default directory:", script_dir)
+print("JSON file path:", json_file_path)
 
 # Load JSON paths dynamically
 with open(json_file_path, "r") as json_file:
