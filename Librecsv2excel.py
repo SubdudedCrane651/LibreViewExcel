@@ -4,11 +4,25 @@ import tkinter as tk
 from tkinter import filedialog, messagebox
 import json
 import os  # Needed to open the file automatically
+import sys
 
 def process_csv():
     # Get the script's directory (useful for EXE packaging)
-    script_dir = os.path.dirname(os.path.abspath(__file__))
+    # script_dir = os.path.dirname(os.path.abspath(__file__))
+    # json_file_path = os.path.join(script_dir, "Libre2excel.json")
+    
+    # Get the script or executable directory
+    script_dir = os.path.dirname(os.path.abspath(sys.executable)) if getattr(sys, 'frozen', False) else os.path.dirname(os.path.abspath(__file__))
+
+    # Ensure we exclude `.venv` in the path
+    if ".venv" in script_dir:
+        script_dir = os.path.dirname(script_dir)  # Move one level up
+
     json_file_path = os.path.join(script_dir, "Libre2excel.json")
+
+    print("Filtered default directory:", script_dir)
+    print("JSON file path:", json_file_path)
+
 
     # Load JSON paths dynamically
     with open(json_file_path, "r") as json_file:

@@ -2,3 +2,4 @@ pandas
 xlwings
 matplotlib
 numpy
+openpyxl
