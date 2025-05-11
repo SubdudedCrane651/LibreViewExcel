@@ -59,14 +59,14 @@ def process_csv():
         if pd.isna(timestamp): 
             return None
         hour = timestamp.hour
-        if 1 <= hour < 9:
-            return "Morning (1:00-9:00)"
-        elif 9 <= hour < 12:
-            return "Before Lunch (9:01-12:00)"
+        if 1 <= hour < 6:
+            return "Morning (1:00-6:00)"
+        elif 6 <= hour < 12:
+            return "Before Lunch (6:00-12:00)"
         elif 12 <= hour < 18:
-            return "Before Dinner (12:01-18:00)"
+            return "Before Dinner (12:00-18:00)"
         elif 18 <= hour < 24:
-            return "Evening (18:01-24:00)"
+            return "Evening (18:00-24:00)"
         return None
 
     # Apply time categorization
