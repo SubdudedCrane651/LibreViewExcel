@@ -85,7 +85,7 @@ def process_csv():
     final_df.reset_index(inplace=True)
 
     # Sort columns in the correct order
-    ordered_columns = ["Date", "Morning (1:00-9:00)", "Before Lunch (9:01-12:00)", "Before Dinner (12:01-18:00)", "Evening (18:01-24:00)"]
+    ordered_columns = ["Date", "Morning (1:00-6:00)", "Before Lunch (6:00-12:00)", "Before Dinner (12:00-18:00)", "Evening (18:00-24:00)"]
     final_df = final_df.reindex(columns=ordered_columns)
 
     # Format numbers to one decimal place
