@@ -30,6 +30,9 @@ def process_csv():
         
     # Extract paths
     excel_file = save_paths["excel_file"]
+    if not os.path.isabs(excel_file):
+        excel_file=os.path.join(os.path.expanduser("~"), "Documents")+"\\"+excel_file
+
     image_file = save_paths["image_file"]
     json_file = save_paths["json_file"]
     
