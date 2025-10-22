@@ -35,7 +35,7 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 Source: "F:\Python\LibreViewExcel\dist\librecsv2excel.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "F:\Python\LibreViewExcel\dist\Libre2excel.json"; DestDir: "{app}"; Flags: ignoreversion
 Source: "F:\Python\LibreViewExcel\dist\glucose_chart.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "F:\Python\LibreViewExcel\glucose_report.xlsm"; DestDir: "{userdocs}"; Flags: ignoreversion
+Source: "F:\Python\LibreViewExcel\glucose_report.xlsm"; DestDir: "{code:GetLocalDocumentsFolder}"; Flags: ignoreversion
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
@@ -44,4 +44,14 @@ Name: "{commondesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: 
 
 [Run]
 Filename: "{app}\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: nowait postinstall skipifsilent
+
+[Code]
+function GetLocalDocumentsFolder(): string;
+var
+  shell: Variant;
+begin
+  shell := CreateOleObject('Shell.Application');
+  // 5 = My Documents (non-OneDrive)
+  Result := shell.Namespace(5).Self.Path;
+end;
 
