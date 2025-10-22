@@ -46,12 +46,10 @@ Name: "{commondesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: 
 Filename: "{app}\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: nowait postinstall skipifsilent
 
 [Code]
-function GetLocalDocumentsFolder(): string;
-var
-  shell: Variant;
+function GetLocalDocumentsFolder(Param: string): string;
 begin
-  shell := CreateOleObject('Shell.Application');
-  // 5 = My Documents (non-OneDrive)
-  Result := shell.Namespace(5).Self.Path;
+  Result := GetEnv('USERPROFILE') + '\Documents';
 end;
+
+
 
