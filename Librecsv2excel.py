@@ -32,6 +32,7 @@ def process_csv():
     excel_file = save_paths["excel_file"]
     if not os.path.isabs(excel_file):
         excel_file=os.path.join(os.path.expanduser("~"), "Documents")+"\\"+excel_file
+    print("Excel file path:", excel_file)
 
     image_file = save_paths["image_file"]
     if not os.path.isabs(image_file):
