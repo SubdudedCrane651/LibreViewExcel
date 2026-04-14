@@ -21,7 +21,7 @@ AppSupportURL={#MyAppURL}
 AppUpdatesURL={#MyAppURL}
 DefaultDirName={pf}\{#MyAppName}
 DisableProgramGroupPage=yes
-OutputBaseFilename=setup
+OutputBaseFilename=librecsv2excel_setup
 Compression=lzma
 SolidCompression=yes
 
@@ -35,11 +35,12 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 Source: "F:\Python\LibreViewExcel\dist\librecsv2excel.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "F:\Python\LibreViewExcel\dist\Libre2excel.json"; DestDir: "{app}"; Flags: ignoreversion
 Source: "F:\Python\LibreViewExcel\dist\glucose_chart.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "F:\Python\LibreViewExcel\glucose_report.xlsm"; DestDir: "{code:GetLocalDocumentsFolder}"; Flags: ignoreversion
+Source: "F:\Python\LibreViewExcel\dist\glucose_report.xlsm"; DestDir: "{code:GetLocalDocumentsFolder}"; Flags: ignoreversion
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
-Name: "{commonprograms}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"
+Name: "{commondesktop}\Glucose_report Excel - Shortcut"; Filename: "{code:GetLocalDocumentsFolder}\glucose_report.xlsm"
+Name: "{commondesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: desktopicon
 Name: "{commondesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: desktopicon
 
 [Run]
